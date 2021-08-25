@@ -52,25 +52,21 @@ module.exports = function () {
   }
 };
 
+if (process.env.NODE_ENV === "production") {
+  // app.use(express.static(path.join(__dirname, "client/build")));
+  app.use(express.static("client/build"));
+
+  // app.get("*", function (req, res) {
+  //   res.sendFile(path.join(__dirname, "client/build", "index.html"));
+  // });
+}
+
 mongoose
   .connect(process.env.MONGODB_URI || process.env.DB, {
     useNewUrlParser: true,
   })
   .then(() => console.log("Connected to MongoDB..."))
   .catch((err) => console.error("Could not connect to MongoDB..."));
-
-if (process.env.NODE_ENV === "production") {
-  // app.use(express.static(path.join(__dirname, "client/build")));
-  // app.use(express.static("client/build"));
-  app.use(express.static(path.join(__dirname, "client", "build")));
-
-  // app.get("*", function (req, res) {
-  //   res.sendFile(path.join(__dirname, "client/build", "index.html"));
-  // });
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-  });
-}
 
 // ** MIDDLEWARE ** //
 const whitelist = [
