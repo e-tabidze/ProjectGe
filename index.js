@@ -46,11 +46,11 @@ const subscribtionJob = new CronJob(
 
 subscribtionJob.start();
 
-module.exports = function() {
-  if (!config.get('jwtPrivateKey')) {
-    throw new Error('FATAL ERROR: jwtPrivateKey is not defined.');
+module.exports = function () {
+  if (!config.get("jwtPrivateKey")) {
+    throw new Error("FATAL ERROR: jwtPrivateKey is not defined.");
   }
-}
+};
 
 mongoose
   .connect(process.env.MONGODB_URI || process.env.DB, {
@@ -61,28 +61,36 @@ mongoose
 
 if (process.env.NODE_ENV === "production") {
   // app.use(express.static(path.join(__dirname, "client/build")));
-  app.use(express.static(resolve(process.cwd(), "client/build")));
+  // app.use(express.static("client/build"));
+  app.use(express.static(path.join(__dirname, "client", "build")));
 
-  app.get("*", function (req, res) {
-    res.sendFile((resolve(process.cwd(), "client/build", "index.html")));
+  // app.get("*", function (req, res) {
+  //   res.sendFile(path.join(__dirname, "client/build", "index.html"));
+  // });
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
   });
 }
 
 // ** MIDDLEWARE ** //
-const whitelist = ['http://localhost:3000', 'http://localhost:8080', 'https://shrouded-journey-38552.herokuapp.com']
+const whitelist = [
+  "http://localhost:3000",
+  "http://localhost:8080",
+  "https://shrouded-journey-38552.herokuapp.com",
+];
 const corsOptions = {
   origin: function (origin, callback) {
-    console.log("** Origin of request " + origin)
+    console.log("** Origin of request " + origin);
     if (whitelist.indexOf(origin) !== -1 || !origin) {
-      console.log("Origin acceptable")
-      callback(null, true)
+      console.log("Origin acceptable");
+      callback(null, true);
     } else {
-      console.log("Origin rejected")
-      callback(new Error('Not allowed by CORS'))
+      console.log("Origin rejected");
+      callback(new Error("Not allowed by CORS"));
     }
-  }
-}
-app.use(cors(corsOptions))
+  },
+};
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
