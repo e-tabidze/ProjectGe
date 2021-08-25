@@ -114,13 +114,13 @@ export function deleteJewel(jewelId, userToken) {
 }
 
 export function registerUser(user) {
-  return http.post("/api/users/", user).then((res) => {
+  return http.post("/api/users", user).then((res) => {
     return res;
   });
 }
 
 export function login(email, password) {
-  return http.post("/api/auth/", { email, password });
+  return http.post("/api/auth", { email, password });
 }
 
 export function forgotPassword(email) {

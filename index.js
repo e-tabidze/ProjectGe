@@ -72,7 +72,7 @@ mongoose
 const whitelist = [
   "http://localhost:3000",
   "http://localhost:8080",
-  "https://shrouded-journey-38552.herokuapp.com",
+  "https://projectge.herokuapp.com",
 ];
 const corsOptions = {
   origin: function (origin, callback) {
