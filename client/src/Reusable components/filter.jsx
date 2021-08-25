@@ -18,6 +18,7 @@ const MemoCheckbox = React.memo(
 );
 
 const Filter = ({ items, title, onItemSelect, checkboxStates }) => {
+  console.log(items, "<==== ITEMS to Be Mapped")
   return (
     <div>
       <div className="filterTitle"> {title} </div>
