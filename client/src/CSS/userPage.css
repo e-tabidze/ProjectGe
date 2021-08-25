@@ -1,0 +1,26 @@
+.userpage-main-container {
+  display: grid;
+  grid-template-columns: 15% 70% 15%;
+}
+
+.options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.textUser {
+  display: flex;
+  text-align: left;
+  font-size: 18px;
+  margin: 20px 0px 0px 20px;
+  color: #808080;
+}
+
+.addButton {
+  display: flex;
+  align-items: center;
+  color: #f59a22;
+  cursor: pointer;
+  margin: 50px 0px 0px 20px;
+}

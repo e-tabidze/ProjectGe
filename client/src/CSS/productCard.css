@@ -1,0 +1,19 @@
+.MuiCard-root {
+  margin: 16px 4px;
+  border: 1px solid #ffffff;
+}
+
+.MuiCard-root:hover {
+  border: 1px solid #f59a22;
+}
+
+.MuiTypography-displayBlock {
+  display: flex;
+}
+
+.productcard-img {
+  width: 100%;
+  max-height: 225px;
+  object-fit: cover;
+  margin: 0 auto;
+}

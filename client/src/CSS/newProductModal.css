@@ -1,0 +1,89 @@
+.newjeweltitle {
+  text-align: left;
+  font-size: 16px;
+  color: #f59a22;
+  margin: 20px 0px 20px 20px;
+}
+.navbar-main-container {
+  width: 100%;
+}
+
+.inner-blocks {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.new-product-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: self-start;
+}
+
+.text-fields {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-product-fields {
+  display: flex;
+  flex-direction: row;
+}
+.descriptionSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.new-product-submit {
+  margin: 50px 0px;
+}
+.MuiOutlinedInput-root {
+  margin: 10px;
+  max-width: 300px;
+}
+
+label + .MuiInput-formControl {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.MuiSelect-selectMenu {
+  text-align: left !important;
+}
+
+.input-form {
+  width: 260px;
+}
+
+label {
+  margin-left: 16px;
+  margin-top: 8px;
+}
+
+.MuiFormLabel-root.Mui-focused {
+  color: #f59a22 !important;
+}
+
+.MuiFormControl-fullWidth {
+  margin-top: 15px !important;
+}
+
+.MuiOutlinedInput-root {
+  max-width: 600px !important;
+  max-height: 100px !important;
+}
+
+.MuiInputBase-input .MuiOutlinedInput-input {
+  height: 100px !important;
+}
+
+.MuiDialog-paperWidthSm {
+  width: 750px;
+}
+
+.MuiDialog-paperWidthSm {
+  padding: 25px;
+}

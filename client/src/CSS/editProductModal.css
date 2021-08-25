@@ -1,0 +1,39 @@
+.existingImages {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  width: 100%;
+  padding: 20px 0px 20px 0px;
+}
+
+.existingImageItem {
+  position: relative;
+}
+
+.existingItemDelete {
+  position: absolute;
+  text-align: center;
+  top: 10px;
+  right: 10px;
+  height: 30px;
+  width: 30px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+.existingImages img {
+  max-height: 200px;
+  height: 300px;
+  margin: 0px 10px 0px 10px;
+}
+
+.MuiDialog-paperScrollPaper {
+  display: flex;
+  max-height: calc(100vh - 120px) !important;
+  flex-direction: column;
+}

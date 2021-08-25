@@ -1,0 +1,29 @@
+.option-field {
+  width: 250px;
+  margin: 8px;
+  padding: 5px;
+  border: 4px solid #f59a22;
+  border-radius: 5px;
+}
+
+.option {
+  margin: 50px;
+  padding: 50px;
+}
+
+.select-fields {
+  width: 250px;
+  margin: 8px;
+  padding: 5px;
+  border: 4px solid #f59a22;
+  border-radius: 5px;
+  display: flex;
+  align-items: flex-end;
+  position: absolute;
+  right: 90px;
+}
+
+.select-container {
+  display: flex;
+  flex-direction: row;
+}

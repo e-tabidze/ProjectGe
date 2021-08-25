@@ -1,0 +1,18 @@
+.terms-main-container {
+  margin-top: 50px;
+}
+
+.terms-container {
+  max-width: 1200px;
+  text-align: left;
+  margin: 0 auto;
+}
+
+p {
+  line-height: 1.7;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 300;
+}

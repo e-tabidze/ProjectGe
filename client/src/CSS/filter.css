@@ -1,0 +1,34 @@
+li,
+ul {
+  list-style-type: none;
+}
+
+.filter-main-container {
+  margin-bottom: 50px;
+  border-right: 1px solid #f59a22;
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.filter-option {
+  padding: 1px 10px 10px 20px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.checkbox {
+  background-color: #f59a22;
+  border: 1px solid #f59a22;
+}
+
+.filterTitle {
+  text-align: left !important;
+}
+.MuiCheckbox-colorSecondary.Mui-checked {
+  color: #f59a22 !important;
+}
+
+.MuiTypography-body1 {
+  margin-top: 15px !important;
+}

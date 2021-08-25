@@ -1,0 +1,63 @@
+.navbar-main-container {
+  display: flex;
+  flex-direction: row;
+  max-height: 80px;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  margin-top: 20px;
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  top: 50px;
+  right: 60px;
+  z-index: 5;
+}
+
+.items {
+  display: flex;
+  width: 550px;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 60px;
+  margin-left: 100px;
+}
+
+.logo:hover {
+  filter: brightness(1.4);
+}
+
+.profile-button:hover {
+  filter: brightness(1.4);
+}
+
+.email-initial {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: whitesmoke;
+  border-color: #f59a22;
+  background-color: #f59a22;
+  font-size: 16px;
+}
+
+.email-initial:hover {
+  filter: brightness(1.4);
+}
+
+.fa-bars {
+  color: #f59a22;
+}
+.accountModal {
+  position: fixed;
+  top: 150px;
+  right: 400px;
+  z-index: 999;
+}

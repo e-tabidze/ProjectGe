@@ -1,0 +1,12 @@
+.button {
+  height: 40px;
+  width: 200px;
+  border-radius: 25px;
+  color: whitesmoke;
+  border-color: #f59a22;
+  background-color: #f59a22;
+}
+
+.default-button {
+  color: #f59a22;
+}
