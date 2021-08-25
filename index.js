@@ -46,9 +46,10 @@ const subscribtionJob = new CronJob(
 
 subscribtionJob.start();
 
-if (!config.get("jwtPrivateKey")) {
-  console.error("FATAL ERROR: jwtPrivateKey is not defined");
-  process.exit(1);
+module.exports = function() {
+  if (!config.get('jwtPrivateKey')) {
+    throw new Error('FATAL ERROR: jwtPrivateKey is not defined.');
+  }
 }
 
 mongoose
@@ -61,7 +62,7 @@ mongoose
 if (process.env.NODE_ENV === "production") {
   // app.use(express.static(path.join(__dirname, "client/build")));
   app.use(express.static("client/build"));
-  
+
   app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "client/build", "index.html"));
   });
