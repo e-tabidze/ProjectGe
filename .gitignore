@@ -1,2 +1,5 @@
 node_modules
 client/node_modules
+
+
+mongodb+srv://GeGoldAdmin:@GeGoldAdmin@gegold.s64gk.mongodb.net/ProjectGeGoldDB?retryWrites=true&w=majority
