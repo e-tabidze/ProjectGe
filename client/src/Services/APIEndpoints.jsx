@@ -43,6 +43,7 @@ export function getJewel(id) {
 
 export function getStones() {
   return http.get("/api/stones/").then((res) => {
+    console.log(res, "<===== STONE DATA")
     return res.data;
   });
 }
