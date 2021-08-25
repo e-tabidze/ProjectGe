@@ -115,6 +115,7 @@ export function deleteJewel(jewelId, userToken) {
 
 export function registerUser(user) {
   return http.post("/api/users", user).then((res) => {
+    console.log(res.data, "<====== REGISTER")
     return res;
   });
 }
