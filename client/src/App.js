@@ -25,6 +25,11 @@ function App() {
     getCurrentUser();
   }, []);
 
+
+  useEffect(() => {
+    console.log(currentUser);
+  }, [currentUser])
+
   const getCurrentUser = () => {
     try {
       const jwt = localStorage.getItem("token");
