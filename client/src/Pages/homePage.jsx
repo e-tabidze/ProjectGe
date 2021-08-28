@@ -30,6 +30,10 @@ const HomePage = () => {
     handleGetStones();
   }, []);
 
+  useEffect(() => {
+
+  }, [])
+
   const handleGetJewels = async () => {
     let jewelData = await getJewels();
     // let actives = jewelData.filter((object) => object.expired === false);

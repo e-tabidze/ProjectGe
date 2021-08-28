@@ -54,7 +54,7 @@ module.exports = function () {
 
 if (process.env.NODE_ENV === "production") {
   // app.use(express.static(path.join(__dirname, "client/build")));
-  app.use(express.static("client/build"));
+  app.use(express.static(__dirname, "client/build"));
 
   app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "client/build", "index.html"));
@@ -90,12 +90,12 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.use(express.json());
-app.use("/uploads", express.static("uploads"));
 app.use(cors());
 app.use("/api/stones", stones);
 app.use("/api/metals", metals);
 app.use("/api/pieces", pieces);
 app.use("/api/jewels", jewels);
+app.use("/api/uploads", express.static("uploads"));
 app.use("/api/types", types);
 app.use("/api/users", users);
 app.use("/api/password-reset", passwordReset);
