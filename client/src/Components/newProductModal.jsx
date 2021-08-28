@@ -145,13 +145,13 @@ const NewProductModal = ({ handleNewProductModalToggle, currentUser }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     let errorMessage = validateProperty({ name, value });
-    if (value == "609c0d3330fda220ba62a5a9") {
+    if (value == "6127186196d01a09d81632fa") {
       setSizeActive(!sizeActive);
     }
 
-    if (value == "609c0b3e82706f1df0e5a470") {
+    if (value == "612695f90dade4d347a56a82") {
       setMetalType("gold");
-    } else if (value == "609c0b4c82706f1df0e5a471") {
+    } else if (value == "6127180d96d01a09d81632f9") {
       setMetalType("silver");
     }
 
