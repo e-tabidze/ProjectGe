@@ -53,11 +53,11 @@ module.exports = function () {
 };
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("/client/build"));
+  app.use(express.static(path.join(__dirname, "client", "build")));
   // app.use(express.static("client/build"));
 
   app.get("*", function (req, res) {
-    res.sendFile(path.join("index.html", { root: __dirname }));
+    res.sendFile(path.join(__dirnmame , "client", "build", "index.html"));
   });
 }
 
