@@ -15,7 +15,7 @@ const { Jewel } = require("./models/jewel");
 const passwordReset = require("./routes/passwordReset");
 const path = require("path");
 
-const __dirname = path.resolve();
+// const __dirname = path.resolve();
 
 require("dotenv").config();
 
@@ -99,7 +99,7 @@ if (process.env.NODE_ENV === "production") {
   // app.use(express.static("client/build"));
 
   app.get("*", function (req, res) {
-    res.sendFile(path.join(__dirnmame, "client", "build", "index.html"));
+    res.sendFile(path.join(__dirnmame, "client/build/index.html"));
   });
 }
 
