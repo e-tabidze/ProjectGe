@@ -1,10 +1,3 @@
-const stones = require("./routes/stones");
-const metals = require("./routes/metals");
-const pieces = require("./routes/pieces");
-const jewels = require("./routes/jewels");
-const types = require("./routes/types");
-const users = require("./routes/users");
-const auth = require("./routes/auth");
 const config = require("config");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -12,8 +5,17 @@ const express = require("express");
 const app = express();
 const CronJob = require("cron").CronJob;
 const { Jewel } = require("./models/jewel");
-const passwordReset = require("./routes/passwordReset");
 const path = require("path");
+
+// Routes
+const stones = require("./routes/stones");
+const metals = require("./routes/metals");
+const pieces = require("./routes/pieces");
+const jewels = require("./routes/jewels");
+const types = require("./routes/types");
+const users = require("./routes/users");
+const auth = require("./routes/auth");
+const passwordReset = require("./routes/passwordReset");
 
 // const __dirname = path.resolve();
 
@@ -95,11 +97,11 @@ app.use("/api/password-reset", passwordReset);
 app.use("/api/auth", auth);
 
 if (process.env.NODE_ENV === "production") {
-  // app.use(express.static(path.join(__dirname, "client", "build")));
-  app.use(express.static("client/build"));
+  app.use(express.static(path.join(__dirname, "client", "build")));
+  // app.use(express.static("client/build"));
 
   app.get("*", function (req, res) {
-    res.sendFile(path.resolve(__dirnmame, "client", "build", "index.html"));
+    res.sendFile(path.join(__dirnmame, "client", "build", "index.html"));
   });
 }
 
