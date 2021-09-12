@@ -53,18 +53,18 @@ module.exports = function () {
 };
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "./client/build")));
+  app.use(express.static(path.join(__dirname, "/client/build")));
   // app.use(express.static("client/build"));
 
   app.get("*", function (req, res) {
-    res.sendFile(path.join("/client/build", "index.html"));
+    res.sendFile(path.join("index.html", { root: __dirname }));
   });
 }
 
 mongoose
   .connect(process.env.MONGODB_URI || process.env.DB, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
   })
   .then(() => console.log("Connected to MongoDB..."))
   .catch((err) => console.error("Could not connect to MongoDB..."));
