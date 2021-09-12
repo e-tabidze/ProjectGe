@@ -15,6 +15,8 @@ const { Jewel } = require("./models/jewel");
 const passwordReset = require("./routes/passwordReset");
 const path = require("path");
 
+const __dirname = path.resolve();
+
 require("dotenv").config();
 
 const expChecker = async () => {
