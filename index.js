@@ -52,15 +52,6 @@ module.exports = function () {
   }
 };
 
-// if (process.env.NODE_ENV === "production") {
-app.use(express.static(path.join(__dirname, "client", "build")));
-// app.use(express.static("client/build"));
-
-app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirnmame, "client", "build", "index.html"));
-});
-// }
-
 mongoose
   .connect(process.env.MONGODB_URI || process.env.DB, {
     useNewUrlParser: true,
@@ -100,6 +91,15 @@ app.use("/api/types", types);
 app.use("/api/users", users);
 app.use("/api/password-reset", passwordReset);
 app.use("/api/auth", auth);
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "client", "build")));
+  // app.use(express.static("client/build"));
+
+  app.get("*", function (req, res) {
+    res.sendFile(path.join(__dirnmame, "client", "build", "index.html"));
+  });
+}
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
