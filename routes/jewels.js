@@ -14,6 +14,7 @@ const storage = multer.diskStorage({
   },
   filename: function (req, file, cb) {
     const fileName = file.originalname.replace(/\s+/g, "-").toLowerCase();
+
     cb(null, fileName);
   },
 });
@@ -128,64 +129,69 @@ router.post("/similar", async (req, res) => {
   res.send(filteredData);
 });
 
-router.post("/update/:id", auth, upload.array("productImage"), async (req, res) => {
-  const { error } = validate(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+router.post(
+  "/update/:id",
+  auth,
+  upload.array("productImage"),
+  async (req, res) => {
+    const { error } = validate(req.body);
+    if (error) return res.status(400).send(error.details[0].message);
 
-  const metal = await Metal.findById(req.body.metalId);
-  if (!metal) return res.status(400).send("Invalid Metal");
+    const metal = await Metal.findById(req.body.metalId);
+    if (!metal) return res.status(400).send("Invalid Metal");
 
-  const piece = await Piece.findById(req.body.pieceId);
-  if (!piece) return res.status(400).send("Invalid Piece");
+    const piece = await Piece.findById(req.body.pieceId);
+    if (!piece) return res.status(400).send("Invalid Piece");
 
-  const stone = await Stone.findById(req.body.stoneId);
-  if (!stone) return res.status(400).send("Invalid Stone");
+    const stone = await Stone.findById(req.body.stoneId);
+    if (!stone) return res.status(400).send("Invalid Stone");
 
-  let imageArray = req.files.map((file) => {
-    return file.path;
-  });
+    let imageArray = req.files.map((file) => {
+      return file.path;
+    });
 
-  var exisArr = req.body.existingProductImage.split(',');
+    var exisArr = req.body.existingProductImage.split(",");
 
-  exisArr.map(item => {
-    imageArray.push(item);
-  })
+    exisArr.map((item) => {
+      imageArray.push(item);
+    });
 
-  console.log(exisArr, imageArray, " <======= OPA");
+    console.log(exisArr, imageArray, " <======= OPA");
 
-  const jewel = await Jewel.findByIdAndUpdate(
-    req.params.id,
-    {
-      name: req.body.name,
-      price: req.body.price,
-      description: req.body.description,
-      productImage: imageArray,
-      contactNumber: req.body.contactNumber,
-      contactPerson: req.body.contactPerson,
-      metal: {
-        _id: metal._id,
-        name: metal.name,
+    const jewel = await Jewel.findByIdAndUpdate(
+      req.params.id,
+      {
+        name: req.body.name,
+        price: req.body.price,
+        description: req.body.description,
+        productImage: imageArray,
+        contactNumber: req.body.contactNumber,
+        contactPerson: req.body.contactPerson,
+        metal: {
+          _id: metal._id,
+          name: metal.name,
+        },
+        piece: {
+          _id: piece._id,
+          name: piece.name,
+        },
+        stone: {
+          _id: stone._id,
+          name: stone.name,
+        },
+        // type: {
+        //   _id: type._id,
+        //   name: type.name,
+        // },
       },
-      piece: {
-        _id: piece._id,
-        name: piece.name,
-      },
-      stone: {
-        _id: stone._id,
-        name: stone.name,
-      },
-      // type: {
-      //   _id: type._id,
-      //   name: type.name,
-      // },
-    },
 
-    { new: true }
-  );
-  if (!jewel)
-    return res.status(404).send("The jewel with given ID was not found");
-  res.send(jewel);
-});
+      { new: true }
+    );
+    if (!jewel)
+      return res.status(404).send("The jewel with given ID was not found");
+    res.send(jewel);
+  }
+);
 
 router.delete("/delete/:id", auth, async (req, res) => {
   const jewel = await Jewel.findByIdAndRemove(req.params.id);
