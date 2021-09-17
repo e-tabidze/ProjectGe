@@ -48,7 +48,7 @@ function App() {
   };
 
   return (
-    <Router>
+    <Switch>
       <div className="App">
         <ToastContainer />
         <Navbar
@@ -79,7 +79,7 @@ function App() {
         />
         <Footer currentUser={currentUser} />
       </div>
-    </Router>
+    </Switch>
   );
 }
 
