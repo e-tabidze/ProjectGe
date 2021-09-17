@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getJewels } from "./Services/APIEndpoints";
 import { ToastContainer } from "react-toastify";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Router } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import Navbar from "./Components/navbar";
 import HomePage from "./Pages/homePage";
@@ -48,7 +48,7 @@ function App() {
   };
 
   return (
-    <Switch>
+    <Router>
       <div className="App">
         <ToastContainer />
         <Navbar
@@ -79,7 +79,7 @@ function App() {
         />
         <Footer currentUser={currentUser} />
       </div>
-    </Switch>
+    </Router>
   );
 }
 
