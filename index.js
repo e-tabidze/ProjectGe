@@ -90,7 +90,7 @@ app.use("/api/stones", stones);
 app.use("/api/metals", metals);
 app.use("/api/pieces", pieces);
 app.use("/api/jewels", jewels);
-app.use("/api/uploads", express.static(path.join(__dirname, "uploads")));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/api/types", types);
 app.use("/api/users", users);
 app.use("/api/password-reset", passwordReset);
