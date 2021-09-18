@@ -542,7 +542,7 @@ const EditProductModal = ({ currentUser, productObject, toggleEditModal }) => {
                         <div className="existingImageItem" key={index}>
                           <img
                             alt="Product"
-                            src={`http://localhost:3000/${image}`}
+                            src={`${image}`}
                           />
                           <button
                             onClick={(e) => handleDeleteImage(image, e)}

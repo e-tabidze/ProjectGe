@@ -76,7 +76,7 @@ const MyProduct = ({ jewel, currentUser }) => {
                 <div key={index}>
                   <img
                     className="bannerImage"
-                    src={jewel && `http://localhost:3000/${img}`}
+                    src={jewel && `${img}`}
                     alt="project-ge"
                   />
                 </div>
@@ -89,7 +89,7 @@ const MyProduct = ({ jewel, currentUser }) => {
                 return (
                   <img
                     className="myproduct-img"
-                    src={jewel && `http://localhost:3000/${img}`}
+                    src={jewel && `${img}`}
                   />
                 );
               })}

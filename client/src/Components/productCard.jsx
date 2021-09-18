@@ -28,6 +28,7 @@ const settings = {
 };
 
 const ProductCard = ({ jewel }) => {
+  console.log(jewel.productImage, "<==== IMAGE")
   return (
     <NavLink to={`/product/${jewel._id}`}>
       <Card>

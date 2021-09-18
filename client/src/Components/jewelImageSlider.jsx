@@ -37,7 +37,7 @@ const JewelImageSlider = (jewel) => {
             <div key={index}>
               <img
                 className="bannerImage"
-                src={jewel && `http://localhost:3000/${img}`}
+                src={jewel && `${img}`}
                 alt="project-ge"
               />
             </div>
