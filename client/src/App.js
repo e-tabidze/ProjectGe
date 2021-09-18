@@ -47,40 +47,38 @@ function App() {
   };
 
   return (
-    <Router>
-      <Switch>
-        <div className="App">
-          <ToastContainer />
-          <Navbar
-            handleSearchByName={handleSearchByName}
-            currentUser={currentUser}
-          />
-          <Route exact path="/" component={() => <HomePage />} />
-          <Route exact path="/product/:id" component={JewelPage} />
-          <Route
-            path="/forgot-password/:userId/:token"
-            component={ForgotPasswordReset}
-          />
-          <Route
-            exact
-            path="/my-profile"
-            render={(props) => {
-              if (!currentUser) return null;
-              return <UserPage {...props} currentUser={currentUser} />;
-            }}
-          />
-          <Route exact path="/terms" component={Terms} />
-          <Route exact path="/contact-us" component={ContactUs} />
-          <Route exact path="/gegold-ads" component={Ad} />
+    <Switch>
+      <div className="App">
+        <ToastContainer />
+        <Navbar
+          handleSearchByName={handleSearchByName}
+          currentUser={currentUser}
+        />
+        <Route exact path="/" component={() => <HomePage />} />
+        <Route exact path="/product/:id" component={JewelPage} />
+        <Route
+          path="/forgot-password/:userId/:token"
+          component={ForgotPasswordReset}
+        />
+        <Route
+          exact
+          path="/my-profile"
+          render={(props) => {
+            if (!currentUser) return null;
+            return <UserPage {...props} currentUser={currentUser} />;
+          }}
+        />
+        <Route exact path="/terms" component={Terms} />
+        <Route exact path="/contact-us" component={ContactUs} />
+        <Route exact path="/gegold-ads" component={Ad} />
 
-          <Route
-            path="/reset-password/:userId/:token"
-            component={ResetPasswordPage}
-          />
-          <Footer currentUser={currentUser} />
-        </div>
-      </Switch>
-    </Router>
+        <Route
+          path="/reset-password/:userId/:token"
+          component={ResetPasswordPage}
+        />
+        <Footer currentUser={currentUser} />
+      </div>
+    </Switch>
   );
 }
 
