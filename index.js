@@ -1,4 +1,4 @@
-const config = require("config");
+// const config = require("config");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const express = require("express");
@@ -51,7 +51,7 @@ const subscribtionJob = new CronJob(
 subscribtionJob.start();
 
 module.exports = function () {
-  if (!config.get("jwtPrivateKey")) {
+  if (!process.env.JWT_PRIVATE_KEY) {
     throw new Error("FATAL ERROR: jwtPrivateKey is not defined.");
   }
 };
@@ -72,12 +72,9 @@ const whitelist = [
 ];
 const corsOptions = {
   origin: function (origin, callback) {
-    console.log("** Origin of request " + origin);
     if (whitelist.indexOf(origin) !== -1 || !origin) {
-      console.log("Origin acceptable");
       callback(null, true);
     } else {
-      console.log("Origin rejected");
       callback(new Error("Not allowed by CORS"));
     }
   },
@@ -99,11 +96,11 @@ app.use("/api/auth", auth);
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "/client/build")));
   // app.use(express.static("client/build"));
-  
+
   app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "/client/build", "index.html"));
   });
 }
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3009;
 app.listen(port, () => console.log(`Listening on port ${port}...`));

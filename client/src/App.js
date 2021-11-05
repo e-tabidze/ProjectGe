@@ -1,83 +1,44 @@
-import React, { useState, useEffect } from "react";
-import { getJewels } from "./Services/APIEndpoints";
-import { ToastContainer } from "react-toastify";
-import { Route, Switch, Router } from "react-router-dom";
-import jwtDecode from "jwt-decode";
-import Navbar from "./Components/navbar";
-import HomePage from "./Pages/homePage";
-import UserPage from "./Pages/userPage";
-import Terms from "./Pages/terms";
-import Footer from "./Components/footer";
-import JewelPage from "./Pages/jewelPage";
+import React from "react";
+import useCurrentUser from "./Helpers/useCurrentUser";
+import Navbar from "./Components/Navbar/Navbar";
+import HomePage from "./Pages/HomePage/HomePage";
+import UserPage from "./Pages/UserPage/UserPage";
+import ProductPage from "./Pages/ProductPage/ProductPage";
+import ResetPasswordPage from "./Pages/ResetPasswordPage/ResetPasswordPage";
+import Terms from "./Pages/Terms/Terms";
+import Footer from "./Components/Footer/Footer";
 
-import ResetPasswordPage from "./Components/forgotPasswordReset";
+import { Switch, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
-import "./App.css";
-import ForgotPasswordReset from "./Components/forgotPasswordReset";
-import ContactUs from "./Pages/contactUs";
-import Ad from "./Pages/ad";
+import "./App.scss";
 
 function App() {
-  const [currentUser, setCurrentUser] = useState("");
-
-  useEffect(() => {
-    getCurrentUser();
-  }, []);
-
-  useEffect(() => {
-    console.log(currentUser);
-  }, [currentUser]);
-
-  const getCurrentUser = () => {
-    try {
-      const jwt = localStorage.getItem("token");
-      let currentUserData = jwtDecode(jwt);
-      setCurrentUser(currentUserData);
-    } catch (ex) {}
-  };
-  const handleSearchByName = async (symbols, setJewels) => {
-    let demoJewels = await getJewels();
-    console.log(demoJewels);
-    let filtered = demoJewels.filter((item) => {
-      return item.name.toLowerCase().includes(symbols.toLowerCase());
-    });
-    console.log(filtered);
-    setJewels(filtered);
-  };
-
+  const { currentUser } = useCurrentUser();
   return (
     <Switch>
-      <div className="App">
+      <>
         <ToastContainer />
-        <Navbar
-          handleSearchByName={handleSearchByName}
-          currentUser={currentUser}
-        />
+        <Navbar />
         <Route exact path="/" component={() => <HomePage />} />
-        <Route exact path="/product/:id" component={JewelPage} />
-        <Route
-          path="/forgot-password/:userId/:token"
-          component={ForgotPasswordReset}
-        />
         <Route
           exact
-          path="/my-profile"
-          render={(props) => {
+          path="/user-page"
+          render={() => {
             if (!currentUser) return null;
-            return <UserPage {...props} currentUser={currentUser} />;
+            return <UserPage />;
           }}
         />
-        <Route exact path="/terms" component={Terms} />
-        <Route exact path="/contact-us" component={ContactUs} />
-        <Route exact path="/gegold-ads" component={Ad} />
-
+        <Route exact path="/product/:id" component={() => <ProductPage />} />
         <Route
+          exact
           path="/reset-password/:userId/:token"
-          component={ResetPasswordPage}
+          component={() => <ResetPasswordPage />}
         />
-        <Footer currentUser={currentUser} />
-      </div>
+        <Route exact path="/terms-and-conditions" component={() => <Terms />} />
+        <Footer />
+      </>
     </Switch>
   );
 }
